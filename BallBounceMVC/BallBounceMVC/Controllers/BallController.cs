@@ -1,4 +1,3 @@
-using System;
 using BallBounceMVC.Models;
 
 namespace BallBounceMVC.Controllers

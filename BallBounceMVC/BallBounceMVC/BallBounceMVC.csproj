@@ -109,15 +109,20 @@
   <ItemGroup>
     <Compile Include="Controllers\BallController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Entities\Ball.cs" />
     <Compile Include="Entities\GameObject.cs" />
     <Compile Include="Models\BallsModel.cs" />
+    <Compile Include="Models\FrameModel.cs" />
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="BallBounceGame.cs" />
-    <Compile Include="Views\BallViewer.cs" />
+    <Compile Include="Views\BallsViewer.cs" />
+    <Compile Include="Views\FrameViewer.cs" />
+    <Compile Include="Views\PlayerViewer.cs" />
     <Compile Include="Views\Viewer.cs" />
     <Compile Include="Views\WorldViewer.cs" />
   </ItemGroup>

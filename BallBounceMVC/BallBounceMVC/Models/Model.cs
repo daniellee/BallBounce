@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-
 namespace BallBounceMVC.Models
 {
 	public abstract class Model

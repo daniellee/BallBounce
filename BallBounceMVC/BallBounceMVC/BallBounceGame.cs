@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using BallBounceMVC.Controllers;
 using BallBounceMVC.Models;
+using BallBounceMVC.Views;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
 namespace BallBounceMVC
 {
@@ -17,9 +12,19 @@ namespace BallBounceMVC
 	/// </summary>
 	public class BallBounceGame : Game
 	{
-		GraphicsDeviceManager _graphics;
+		readonly GraphicsDeviceManager _graphics;
 		SpriteBatch _spriteBatch;
 		private World _world;
+		private BallController _ballController;
+		private BallsViewer _ballsViewer;
+		private WorldViewer _worldViewer;
+		private Texture2D _ballTexture;
+		private Texture2D _frameTexture;
+		private FrameViewer _frameViewer;
+		private PlayerController _playerController;
+		private Texture2D _playerTexture;
+		private PlayerViewer _playerViewer;
+
 
 		public BallBounceGame()
 		{
@@ -49,9 +54,21 @@ namespace BallBounceMVC
 			// Create a new SpriteBatch, which can be used to draw textures.
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			_world = new World();
+			_world = new World(_graphics.GraphicsDevice.Viewport.Width, _graphics.GraphicsDevice.Viewport.Height);
 
+			BallsModel ballsModel = _world.GetBallsModel();
+			_ballController = new BallController(ballsModel);
+			_ballTexture = Content.Load<Texture2D>("Sprites\\SilverBall");
+			_ballsViewer = new BallsViewer(ballsModel.GetAllBalls(), _ballTexture);
 
+			_frameTexture = Content.Load<Texture2D>("Frame\\titanium");
+			_frameViewer = new FrameViewer(_world.GetFrameModel(), _frameTexture);
+			_worldViewer = new WorldViewer();
+
+			_playerTexture = Content.Load<Texture2D>("Sprites\\PlayerShip");
+			PlayerModel playerModel = _world.GetPlayerModel();
+			_playerController = new PlayerController(playerModel);
+			_playerViewer = new PlayerViewer(playerModel, _playerTexture);
 		}
 
 		/// <summary>
@@ -60,7 +77,10 @@ namespace BallBounceMVC
 		/// </summary>
 		protected override void UnloadContent()
 		{
-			// TODO: Unload any non ContentManager content here
+			_ballTexture.Dispose();
+			_frameTexture.Dispose();
+			_playerTexture.Dispose();
+			base.UnloadContent();
 		}
 
 		/// <summary>
@@ -72,9 +92,9 @@ namespace BallBounceMVC
 		{
 			// Allows the game to exit
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-				this.Exit();
+				Exit();
 
-			// TODO: Add your update logic here
+			_ballController.Control((float)gameTime.ElapsedGameTime.TotalSeconds);
 
 			base.Update(gameTime);
 		}
@@ -87,7 +107,12 @@ namespace BallBounceMVC
 		{
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			// TODO: Add your drawing code here
+			_spriteBatch.Begin();
+			_worldViewer.Draw(_spriteBatch);
+			_frameViewer.Draw(_spriteBatch);
+			_ballsViewer.Draw(_spriteBatch);
+			_playerViewer.Draw(_spriteBatch);
+			_spriteBatch.End();
 
 			base.Draw(gameTime);
 		}
