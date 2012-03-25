@@ -107,7 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BallController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Entities\Ball.cs" />

@@ -22,19 +22,34 @@ namespace BallBounceMVC.Entities
 			var ballRectangle = new Rectangle((int) Position.X, (int) Position.Y, Width, Height);
 			if (world.GetFrameModel().IntersectsWithTopWall(ballRectangle))
 			{
-				if (Math.Sign(Velocity.Y) <= 0)
-					Velocity.Y = -(Velocity.Y);
+				ChangeVelocityToDown();
 			}
 			if (world.GetFrameModel().IntersectsWithLeftWall(ballRectangle))
 			{
-				if (Math.Sign(Velocity.X) <= 0)
-					Velocity.X = -(Velocity.X);
+				ChangeVelocityToRight();
 			}
 			if (world.GetFrameModel().IntersectsWithRightWall(ballRectangle))
 			{
-				if (Math.Sign(Velocity.X) >= 0)
-					Velocity.X = -(Velocity.X);
+				ChangeVelocityToLeft();
 			}
+		}
+
+		private void ChangeVelocityToLeft()
+		{
+			if (Math.Sign(Velocity.X) >= 0)
+				Velocity.X = -(Velocity.X);
+		}
+
+		private void ChangeVelocityToRight()
+		{
+			if (Math.Sign(Velocity.X) <= 0)
+				Velocity.X = -(Velocity.X);
+		}
+
+		private void ChangeVelocityToDown()
+		{
+			if (Math.Sign(Velocity.Y) <= 0)
+				Velocity.Y = -(Velocity.Y);
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace BallBounceMVC.Models
 		private readonly Vector2 _startPosition;
 		private readonly Vector2 _startDirection;
 		private readonly IList<Ball> _balls;
-		private World _world;
+		private readonly World _world;
 
 		public BallsModel(World world, int width, int height, Vector2 startPosition, Vector2 startDirection): base(world)
 		{
@@ -26,11 +26,40 @@ namespace BallBounceMVC.Models
 
 		public override void Update(float elapsedSeconds)
 		{
-			foreach (var ball in GetAllBalls())
+			for (int i = _balls.Count-1;i>=0;i--)
 			{
-				ball.Position += ball.Velocity * (World.GameSpeed * elapsedSeconds);
-				ball.HandleCollisionWithAnyGameObject(_world);
+				var ball = _balls[i];
+				ball.Position += ball.Velocity * (World.GameSpeed);
+				if (IsBallDead(ball))
+				{
+					HandleBallDeath(ball);
+				}
+				else
+				{
+					ball.HandleCollisionWithAnyGameObject(_world);
+				}
 			}		
+		}
+
+		private void HandleBallDeath(Ball ball)
+		{
+			Remove(ball);
+			if(_balls.Count == 0)
+				_world.Lives--;
+		}
+
+		private void Remove(Ball ball)
+		{
+			_balls.Remove(ball);
+		}
+
+		private bool IsBallDead(Ball ball)
+		{
+			Rectangle viewport = _world.GetViewport();
+
+			return !viewport.Contains(new Point(
+							(int)ball.Position.X,
+							(int)ball.Position.Y));
 		}
 
 		public IList<Ball> GetAllBalls()

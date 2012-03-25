@@ -15,7 +15,6 @@ namespace BallBounceMVC
 		readonly GraphicsDeviceManager _graphics;
 		SpriteBatch _spriteBatch;
 		private World _world;
-		private BallController _ballController;
 		private BallsViewer _ballsViewer;
 		private WorldViewer _worldViewer;
 		private Texture2D _ballTexture;
@@ -57,7 +56,6 @@ namespace BallBounceMVC
 			_world = new World(_graphics.GraphicsDevice.Viewport.Width, _graphics.GraphicsDevice.Viewport.Height);
 
 			BallsModel ballsModel = _world.GetBallsModel();
-			_ballController = new BallController(ballsModel);
 			_ballTexture = Content.Load<Texture2D>("Sprites\\SilverBall");
 			_ballsViewer = new BallsViewer(ballsModel.GetAllBalls(), _ballTexture);
 
@@ -94,7 +92,8 @@ namespace BallBounceMVC
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				Exit();
 
-			_ballController.Control((float)gameTime.ElapsedGameTime.TotalSeconds);
+			_world.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+			_playerController.Control((float)gameTime.ElapsedGameTime.TotalSeconds);
 
 			base.Update(gameTime);
 		}

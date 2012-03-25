@@ -11,6 +11,7 @@ namespace BallBounceMVC.Models
 		private readonly Rectangle _viewportRect;
 		private readonly FrameModel _frameModel;
 		private readonly PlayerModel _playerModel;
+		private int _lives = 3;
 
 		public World(int viewportWidth, int viewportHeight)
 		{
@@ -20,6 +21,12 @@ namespace BallBounceMVC.Models
 			_ballsModel = new BallsModel(this, BoxLength, BoxLength, new Vector2(400f, 400f), _startDirectionForNewBall);
 			_frameModel = new FrameModel(this);
 			_playerModel = new PlayerModel(this);
+		}
+
+		public int Lives
+		{
+			get { return _lives; }
+			set { _lives = value; }
 		}
 
 		public BallsModel GetBallsModel()
@@ -40,6 +47,11 @@ namespace BallBounceMVC.Models
 		public PlayerModel GetPlayerModel()
 		{
 			return _playerModel;
+		}
+
+		public void Update(float elapsedSeconds)
+		{
+			_ballsModel.Update(elapsedSeconds);
 		}
 	}
 }
