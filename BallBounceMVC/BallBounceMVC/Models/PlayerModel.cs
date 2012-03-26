@@ -34,5 +34,10 @@ namespace BallBounceMVC.Models
 		{
 			return _ship;
 		}
+
+		public bool IntersectsWith(Rectangle ballRectangle)
+		{
+			return _ship.Intersects(ballRectangle);
+		}
 	}
 }

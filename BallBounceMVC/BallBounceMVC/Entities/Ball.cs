@@ -20,17 +20,26 @@ namespace BallBounceMVC.Entities
 		public void HandleCollisionWithAnyGameObject(World world)
 		{
 			var ballRectangle = new Rectangle((int) Position.X, (int) Position.Y, Width, Height);
-			if (world.GetFrameModel().IntersectsWithTopWall(ballRectangle))
+			var frame = world.GetFrameModel();
+			if (frame.IntersectsWithTopWall(ballRectangle))
 			{
 				ChangeVelocityToDown();
 			}
-			if (world.GetFrameModel().IntersectsWithLeftWall(ballRectangle))
+			if (frame.IntersectsWithLeftWall(ballRectangle))
 			{
 				ChangeVelocityToRight();
 			}
-			if (world.GetFrameModel().IntersectsWithRightWall(ballRectangle))
+
+			if (frame.IntersectsWithRightWall(ballRectangle))
 			{
 				ChangeVelocityToLeft();
+			}
+
+			var player = world.GetPlayerModel();
+			if(player.IntersectsWith(ballRectangle))
+			{
+				if (Math.Sign(Velocity.Y) >= 0)
+					Velocity.Y = -(Velocity.Y);
 			}
 		}
 
