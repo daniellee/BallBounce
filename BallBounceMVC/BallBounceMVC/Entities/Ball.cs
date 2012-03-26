@@ -38,8 +38,7 @@ namespace BallBounceMVC.Entities
             var player = world.GetPlayerModel();
             if (player.IntersectsWith(ballRectangle))
             {
-                if (Math.Sign(Velocity.Y) >= 0)
-                    Velocity.Y = -(Velocity.Y);
+                player.SetBallVelocityAfterCollision(this);
             }
         }
 

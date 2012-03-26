@@ -115,6 +115,7 @@
     <Compile Include="Models\FrameModel.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\PlayerModel.cs" />
+    <Compile Include="Models\ShipZones.cs" />
     <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

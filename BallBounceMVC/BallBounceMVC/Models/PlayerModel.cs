@@ -1,4 +1,5 @@
 using System;
+using BallBounceMVC.Entities;
 using Microsoft.Xna.Framework;
 
 namespace BallBounceMVC.Models
@@ -9,6 +10,7 @@ namespace BallBounceMVC.Models
         private int _width;
         private int _height;
         private World _world;
+        private ShipZones _zones;
 
         public PlayerModel(World world)
             : base(world)
@@ -39,6 +41,48 @@ namespace BallBounceMVC.Models
         public bool IntersectsWith(Rectangle ballRectangle)
         {
             return _ship.Intersects(ballRectangle);
+        }
+
+        public void SetBallVelocityAfterCollision(Ball ball)
+        {
+            ChangeVelocityToUp(ball);
+            _zones = new ShipZones(_ship);
+
+            if(_zones.HitFarthestLeftZone(ball))
+            {
+                ball.Velocity.X = -3.5f;
+            }
+            else if(_zones.HitFarthestRightZone(ball))
+            {
+                ball.Velocity.X = 3.5f;
+            }
+            else if (_zones.HitFarLeftZone(ball))
+            {
+                ball.Velocity.X = -2.0f;
+            }
+            else if (_zones.HitFarRightZone(ball))
+            {
+                ball.Velocity.X = 2.0f;
+            }
+            else if (_zones.HitMiddleLeftZone(ball))
+            {
+                ball.Velocity.X = -1.0f;
+            }
+            else if (_zones.HitMiddleRightZone(ball))
+            {
+                ball.Velocity.X = 1.0f;
+            }
+            else if(_zones.HitCentreRightZone(ball))
+            {
+                ball.Velocity.X = 0.5f;
+            }
+
+        }
+
+        private static void ChangeVelocityToUp(Ball ball)
+        {
+            if (Math.Sign(ball.Velocity.Y) >= 0)
+                ball.Velocity.Y = -(ball.Velocity.Y);
         }
     }
 }

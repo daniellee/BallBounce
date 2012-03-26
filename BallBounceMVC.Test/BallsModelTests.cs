@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using BallBounceMVC.Models;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
@@ -114,14 +115,128 @@ namespace BallBounceMVC.Test
         public void BallBouncesUpWhenItHitsThePlayer()
         {
             var firstBall = _ballsModel.GetFirstBall();
-            firstBall.Position = new Vector2(15f, 15f);
+            firstBall.Position = new Vector2(400f, 520f);
+            firstBall.Velocity = new Vector2(0f, 5f);
+
+            _ballsModel.Update(1.0f);
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Position.Y, Is.EqualTo(520f));
+        }
+
+        [Test]
+        public void BallXVelocityChangesALotToTheLeftWhenItHitsLeftEndOfPlayer()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(400f, 520f);
             firstBall.Velocity = new Vector2(0f, -5f);
 
             _ballsModel.Update(1.0f);
             _ballsModel.Update(1.0f);
 
-            Assert.That(firstBall.Position.Y, Is.EqualTo(15f));
+            Debug.WriteLine(_world.GetPlayerModel().GetShip().Left);
+            Debug.WriteLine(_world.GetPlayerModel().GetShip().Right);
+
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(-3.5f));
+            Assert.That(firstBall.Position.Y, Is.LessThan(525f));
         }
 
+        [Test]
+        public void BallXVelocityChangesALotToTheRightWhenItHitsRightEndOfPlayer()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(515f, 520f);
+            firstBall.Velocity = new Vector2(0f, -5f);
+
+            _ballsModel.Update(1.0f);
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(3.5f));
+            Assert.That(firstBall.Position.Y, Is.LessThan(525f));
+        }
+
+        [Test]
+        public void BallXVelocityChangesSomewhatToTheLeftWhenItHitsFarLeftZoneOfPlayer()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(425f, 520f);
+            firstBall.Velocity = new Vector2(0f, -5f);
+
+            _ballsModel.Update(1.0f);
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(-2.0f));
+            Assert.That(firstBall.Position.Y, Is.LessThan(525f));
+        }
+
+        [Test]
+        public void BallXVelocityChangesSomewhatToTheRightWhenItHitsFarRightZoneOfPlayer()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(498f, 520f);
+            firstBall.Velocity = new Vector2(0f, -5f);
+
+            _ballsModel.Update(1.0f);
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(2.0f));
+            Assert.That(firstBall.Position.Y, Is.LessThan(525f));
+        }
+
+        [Test]
+        public void BallXVelocityChangesABitToTheLeftWhenItHitsMiddleLeftZoneOfPlayer()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(440f, 520f);
+            firstBall.Velocity = new Vector2(0f, -5f);
+
+            _ballsModel.Update(1.0f);
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(-1.0f));
+            Assert.That(firstBall.Position.Y, Is.LessThan(525f));
+        }
+
+        [Test]
+        public void BallXVelocityChangesABitToTheRightWhenItHitsMiddleRightZoneOfPlayer()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(480f, 520f);
+            firstBall.Velocity = new Vector2(0f, -5f);
+
+            _ballsModel.Update(1.0f);
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(1.0f));
+            Assert.That(firstBall.Position.Y, Is.LessThan(525f));
+        }
+
+        [Test]
+        public void BallXVelocityChangesABitToTheRightWhenItHitsCentreRightZoneOfPlayer()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(465f, 520f);
+            firstBall.Velocity = new Vector2(0f, -5f);
+
+            _ballsModel.Update(1.0f);
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(0.5f));
+            Assert.That(firstBall.Position.Y, Is.LessThan(525f));
+        }
+
+        [Test]
+        public void BallXVelocityIsUnchangedWhenItHitsCentreLeftZoneOfPlayer()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(455f, 520f);
+            firstBall.Velocity = new Vector2(0f, -5f);
+
+            _ballsModel.Update(1.0f);
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(0.0f));
+            Assert.That(firstBall.Position.Y, Is.LessThan(525f));
+        }
     }
 }
