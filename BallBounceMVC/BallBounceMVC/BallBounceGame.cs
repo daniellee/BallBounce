@@ -61,7 +61,9 @@ namespace BallBounceMVC
 
             _frameTexture = Content.Load<Texture2D>("Frame\\titanium");
             _frameViewer = new FrameViewer(_world.GetFrameModel(), _frameTexture);
-            _worldViewer = new WorldViewer();
+
+            var infoFont = Content.Load<SpriteFont>("Fonts\\InfoFont");
+            _worldViewer = new WorldViewer(_world, infoFont);
 
             _playerTexture = Content.Load<Texture2D>("Sprites\\PlayerShip");
             PlayerModel playerModel = _world.GetPlayerModel();
