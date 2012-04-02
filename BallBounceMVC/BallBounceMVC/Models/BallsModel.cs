@@ -46,7 +46,7 @@ namespace BallBounceMVC.Models
         {
             Remove(ball);
             if (_balls.Count == 0)
-                _world.Lives--;
+                _world.HandleLostLife();
         }
 
         private void Remove(Ball ball)

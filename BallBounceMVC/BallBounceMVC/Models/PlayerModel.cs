@@ -7,9 +7,9 @@ namespace BallBounceMVC.Models
     public class PlayerModel : Model
     {
         private Rectangle _ship;
-        private int _width;
-        private int _height;
-        private World _world;
+        private readonly int _width;
+        private readonly int _height;
+        private readonly World _world;
         private ShipZones _zones;
 
         public PlayerModel(World world)
@@ -36,6 +36,11 @@ namespace BallBounceMVC.Models
         public Rectangle GetShip()
         {
             return _ship;
+        }
+
+        public void CenterShip()
+        {
+            _ship.X = _world.GetViewport().Center.X;
         }
 
         public bool IntersectsWith(Rectangle ballRectangle)
