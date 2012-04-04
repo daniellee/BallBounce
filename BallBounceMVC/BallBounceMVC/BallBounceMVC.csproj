@@ -125,6 +125,7 @@
     <Compile Include="BallBounceGame.cs" />
     <Compile Include="Views\BallsViewer.cs" />
     <Compile Include="Views\FrameViewer.cs" />
+    <Compile Include="Views\LevelViewer.cs" />
     <Compile Include="Views\PlayerViewer.cs" />
     <Compile Include="Views\Viewer.cs" />
     <Compile Include="Views\WorldViewer.cs" />

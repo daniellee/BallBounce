@@ -12,7 +12,7 @@ namespace BallBounceMVC.Models
         private readonly Rectangle _viewportRect;
         private readonly FrameModel _frameModel;
         private readonly PlayerModel _playerModel;
-        private LevelModel _currentLevel;
+        public LevelModel CurrentLevel;
         private int _lives = 3;
         private readonly Vector2 _startPositionForNewBall = new Vector2(400f, 400f);
         public GameState CurrentState = GameState.LevelTransitionOn;
@@ -25,7 +25,7 @@ namespace BallBounceMVC.Models
             _ballsModel = new BallsModel(this, BoxLength, BoxLength, _startPositionForNewBall, _startDirectionForNewBall);
             _frameModel = new FrameModel(this);
             _playerModel = new PlayerModel(this);
-            _currentLevel = LoadLevel(1);
+            CurrentLevel = LoadLevel(1);
             CurrentState = GameState.Normal;
         }
 

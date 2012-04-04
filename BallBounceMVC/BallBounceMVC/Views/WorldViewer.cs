@@ -1,4 +1,3 @@
-using System;
 using BallBounceMVC.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

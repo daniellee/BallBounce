@@ -23,6 +23,8 @@ namespace BallBounceMVC
         private PlayerController _playerController;
         private Texture2D _playerTexture;
         private PlayerViewer _playerViewer;
+        private LevelViewer _levelViewer;
+        private Texture2D _yellowSquareTexture;
 
 
         public BallBounceGame()
@@ -69,6 +71,10 @@ namespace BallBounceMVC
             PlayerModel playerModel = _world.GetPlayerModel();
             _playerController = new PlayerController(playerModel);
             _playerViewer = new PlayerViewer(playerModel, _playerTexture);
+
+
+            _yellowSquareTexture = Content.Load<Texture2D>("Sprites\\yellowsquare");
+            _levelViewer = new LevelViewer(_world, _yellowSquareTexture);
         }
 
         /// <summary>
@@ -80,6 +86,7 @@ namespace BallBounceMVC
             _ballTexture.Dispose();
             _frameTexture.Dispose();
             _playerTexture.Dispose();
+            _yellowSquareTexture.Dispose();
             base.UnloadContent();
         }
 
@@ -111,6 +118,7 @@ namespace BallBounceMVC
             _spriteBatch.Begin();
             _worldViewer.Draw(_spriteBatch);
             _frameViewer.Draw(_spriteBatch);
+            _levelViewer.Draw(_spriteBatch);
             _ballsViewer.Draw(_spriteBatch);
             _playerViewer.Draw(_spriteBatch);
             _spriteBatch.End();

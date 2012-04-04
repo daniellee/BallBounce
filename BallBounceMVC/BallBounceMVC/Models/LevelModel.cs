@@ -12,5 +12,10 @@ namespace BallBounceMVC.Models
             _bricks = new List<Brick>();
             _bricks.Add(new Brick());
         }
+
+        public IList<Brick> GetBricks()
+        {
+            return _bricks;
+        }
     }
 }
