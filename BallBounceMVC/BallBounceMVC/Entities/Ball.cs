@@ -22,6 +22,24 @@ namespace BallBounceMVC.Entities
         {
             var ballRectangle = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
             var frame = world.GetFrameModel();
+            HandleFrameAndBallCollision(ballRectangle, frame);
+
+            var player = world.GetPlayerModel();
+            HandlePlayerAndBallCollision(ballRectangle, player);
+
+            HandleBrickAndBallCollisions(ballRectangle, world.CurrentLevel.GetBricks());
+        }
+
+        private void HandlePlayerAndBallCollision(Rectangle ballRectangle, PlayerModel player)
+        {
+            if (player.IntersectsWith(ballRectangle))
+            {
+                player.SetBallVelocityAfterCollision(this);
+            }
+        }
+
+        private void HandleFrameAndBallCollision(Rectangle ballRectangle, FrameModel frame)
+        {
             if (frame.IntersectsWithTopWall(ballRectangle))
             {
                 ChangeVelocityToDown();
@@ -35,14 +53,6 @@ namespace BallBounceMVC.Entities
             {
                 ChangeVelocityToLeft();
             }
-
-            var player = world.GetPlayerModel();
-            if (player.IntersectsWith(ballRectangle))
-            {
-                player.SetBallVelocityAfterCollision(this);
-            }
-
-            HandleBrickAndBallCollisions(ballRectangle, world.CurrentLevel.GetBricks());
         }
 
         private void HandleBrickAndBallCollisions(Rectangle ballRectangle, IEnumerable<Brick> allBricks)
@@ -50,11 +60,11 @@ namespace BallBounceMVC.Entities
             foreach (var brick in allBricks)
             {
                 var brickRect = brick.Boundary;
-                if(brickRect.Intersects(ballRectangle))
+                if (brickRect.Intersects(ballRectangle))
                 {
                     var intersection = Rectangle.Intersect(brickRect, ballRectangle);
 
-                    if(intersection.Height > intersection.Width)
+                    if (intersection.Height > intersection.Width)
                     {
                         ToggleHorizontalVelocity();
                     }
