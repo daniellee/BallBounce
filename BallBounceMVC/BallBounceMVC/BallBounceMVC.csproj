@@ -110,9 +110,12 @@
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Entities\Ball.cs" />
+    <Compile Include="Entities\BallAndBrickCollisionHandler.cs" />
     <Compile Include="Entities\Brick.cs" />
     <Compile Include="Entities\GameObject.cs" />
     <Compile Include="Entities\GameState.cs" />
+    <Compile Include="Levels\LevelWithFourBricks.cs" />
+    <Compile Include="Levels\LevelWithOneBrick.cs" />
     <Compile Include="Models\BallsModel.cs" />
     <Compile Include="Models\FrameModel.cs" />
     <Compile Include="Models\LevelModel.cs" />

@@ -1,4 +1,5 @@
 using BallBounceMVC.Entities;
+using BallBounceMVC.Levels;
 using Microsoft.Xna.Framework;
 
 namespace BallBounceMVC.Models
@@ -75,7 +76,12 @@ namespace BallBounceMVC.Models
 
         public LevelModel LoadLevel(int levelNumber)
         {
-            return new LevelModel();
+            return new LevelWithFourBricks();
+        }
+
+        public LevelModel LoadLevel(LevelModel levelModel)
+        {
+            return levelModel;
         }
 
         public void HandleLostLife()

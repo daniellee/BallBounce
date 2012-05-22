@@ -49,7 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BallsModelTests.cs" />
-    <Compile Include="BrickTests.cs" />
+    <Compile Include="MultipleBrickCollisionTests.cs" />
+    <Compile Include="OneBrickCollisionTests.cs" />
     <Compile Include="PlayerModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorldTests.cs" />

@@ -4,9 +4,9 @@ namespace BallBounceMVC.Entities
 {
     public class Brick
     {
-        public Brick()
+        public Brick(int x, int y)
         {
-            Boundary = new Rectangle(400, 300, 40, 30);
+            Boundary = new Rectangle(x, y, 40, 30);
         }
         public Rectangle Boundary { get; set; }
     }

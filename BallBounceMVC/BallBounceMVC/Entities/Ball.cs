@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using BallBounceMVC.Models;
 using Microsoft.Xna.Framework;
 
@@ -7,6 +6,7 @@ namespace BallBounceMVC.Entities
 {
     public class Ball : GameObject
     {
+        private readonly BallAndBrickCollisionHandler brickCollisionHandler;
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -16,6 +16,7 @@ namespace BallBounceMVC.Entities
             Height = height;
             Position = startPosition;
             Velocity = startDirection;
+            brickCollisionHandler = new BallAndBrickCollisionHandler(this);
         }
 
         public void HandleCollisionWithAnyGameObject(World world)
@@ -27,7 +28,7 @@ namespace BallBounceMVC.Entities
             var player = world.GetPlayerModel();
             HandlePlayerAndBallCollision(ballRectangle, player);
 
-            HandleBrickAndBallCollisions(ballRectangle, world.CurrentLevel.GetBricks());
+            brickCollisionHandler.HandleBrickAndBallCollisions(ballRectangle, world.CurrentLevel.GetBricks());
         }
 
         private void HandlePlayerAndBallCollision(Rectangle ballRectangle, PlayerModel player)
@@ -55,33 +56,12 @@ namespace BallBounceMVC.Entities
             }
         }
 
-        private void HandleBrickAndBallCollisions(Rectangle ballRectangle, IEnumerable<Brick> allBricks)
-        {
-            foreach (var brick in allBricks)
-            {
-                var brickRect = brick.Boundary;
-                if (brickRect.Intersects(ballRectangle))
-                {
-                    var intersection = Rectangle.Intersect(brickRect, ballRectangle);
-
-                    if (intersection.Height > intersection.Width)
-                    {
-                        ToggleHorizontalVelocity();
-                    }
-                    else
-                    {
-                        ToggleVerticalVelocity();
-                    }
-                }
-            }
-        }
-
-        private void ToggleVerticalVelocity()
+        public void ToggleVerticalVelocity()
         {
             Velocity.Y = -(Velocity.Y);
         }
 
-        private void ToggleHorizontalVelocity()
+        public void ToggleHorizontalVelocity()
         {
             Velocity.X = -(Velocity.X);
         }
