@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using BallBounceMVC.Models;
 using Microsoft.Xna.Framework;
 
@@ -40,6 +41,39 @@ namespace BallBounceMVC.Entities
             {
                 player.SetBallVelocityAfterCollision(this);
             }
+
+            HandleBrickAndBallCollisions(ballRectangle, world.CurrentLevel.GetBricks());
+        }
+
+        private void HandleBrickAndBallCollisions(Rectangle ballRectangle, IEnumerable<Brick> allBricks)
+        {
+            foreach (var brick in allBricks)
+            {
+                var brickRect = brick.Boundary;
+                if(brickRect.Intersects(ballRectangle))
+                {
+                    var intersection = Rectangle.Intersect(brickRect, ballRectangle);
+
+                    if(intersection.Height > intersection.Width)
+                    {
+                        ToggleHorizontalVelocity();
+                    }
+                    else
+                    {
+                        ToggleVerticalVelocity();
+                    }
+                }
+            }
+        }
+
+        private void ToggleVerticalVelocity()
+        {
+            Velocity.Y = -(Velocity.Y);
+        }
+
+        private void ToggleHorizontalVelocity()
+        {
+            Velocity.X = -(Velocity.X);
         }
 
         private void ChangeVelocityToLeft()
