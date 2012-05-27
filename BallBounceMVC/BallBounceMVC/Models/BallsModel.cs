@@ -27,17 +27,20 @@ namespace BallBounceMVC.Models
 
         public override void Update(float elapsedSeconds)
         {
-            for (int i = _balls.Count - 1; i >= 0; i--)
+            for (int step = 0; step < _world.GameSpeed;step++ )
             {
-                var ball = _balls[i];
-                ball.Position += ball.Velocity * (World.GameSpeed);
-                if (IsBallDead(ball))
+                for (int i = _balls.Count - 1; i >= 0; i--)
                 {
-                    HandleBallDeath(ball);
-                }
-                else
-                {
-                    ball.HandleCollisionWithAnyGameObject(_world);
+                    var ball = _balls[i];
+                    ball.Position += ball.Velocity;
+                    if (IsBallDead(ball))
+                    {
+                        HandleBallDeath(ball);
+                    }
+                    else
+                    {
+                        ball.HandleCollisionWithAnyGameObject(_world);
+                    }
                 }
             }
         }

@@ -25,7 +25,7 @@ namespace BallBounceMVC.Test
         public void Ball_TravellingUpHitsTwoBricks_ShouldReflectBack()
         {
             var firstBall = _ballsModel.GetFirstBall();
-            firstBall.Position = new Vector2(428, 334f);
+            firstBall.Position = new Vector2(428, 333f);
             firstBall.Velocity = new Vector2(1f, -4f);
 
             _ballsModel.Update(1.0f);
@@ -33,7 +33,7 @@ namespace BallBounceMVC.Test
 
             Assert.That(firstBall.Velocity.Y, Is.GreaterThan(0));
             Assert.That(firstBall.Velocity.X, Is.EqualTo(1f));
-            Assert.That(firstBall.Position.Y, Is.EqualTo(334f));
+            Assert.That(firstBall.Position.Y, Is.EqualTo(333f));
         }
     }
 }

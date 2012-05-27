@@ -90,6 +90,9 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\packages\ServiceStack.Text.3.7.9\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -112,8 +115,13 @@
     <Compile Include="Entities\Ball.cs" />
     <Compile Include="Entities\BallAndBrickCollisionHandler.cs" />
     <Compile Include="Entities\Brick.cs" />
+    <Compile Include="Entities\BrickData.cs" />
     <Compile Include="Entities\GameObject.cs" />
     <Compile Include="Entities\GameState.cs" />
+    <Compile Include="Levels\ILevelDeserialize.cs" />
+    <Compile Include="Levels\LevelData.cs" />
+    <Compile Include="Levels\LevelLoader.cs" />
+    <Compile Include="Levels\LevelSerializer.cs" />
     <Compile Include="Levels\LevelWithFourBricks.cs" />
     <Compile Include="Levels\LevelWithOneBrick.cs" />
     <Compile Include="Models\BallsModel.cs" />

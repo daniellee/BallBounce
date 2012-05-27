@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using BallBounceMVC.Models;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace BallBounceMVC.Entities
 {
     public class BallAndBrickCollisionHandler
     {
-        private readonly Ball ball;
+        private readonly Ball _ball;
 
         public BallAndBrickCollisionHandler(Ball ball)
         {
-            this.ball = ball;
+            _ball = ball;
         }
 
         public void HandleBrickAndBallCollisions(Rectangle ballRectangle, IEnumerable<Brick> allBricks)
@@ -23,29 +21,50 @@ namespace BallBounceMVC.Entities
                 {
                     var intersection = Rectangle.Intersect(brickRect, ballRectangle);
 
-                    int halfBallWidth = ball.Width/2;
+                    int halfBallWidth = _ball.Width/2;
                     if(intersection.Height >= halfBallWidth || intersection.Width >= halfBallWidth)
                     {
                         if (intersection.Height > intersection.Width)
                         {
-                            ball.ToggleHorizontalVelocity();
+                            _ball.ToggleHorizontalVelocity();
                         }
                         else
                         {
-                            ball.ToggleVerticalVelocity();
+                            _ball.ToggleVerticalVelocity();
                         }
                     }
                     else
                     {
-                        var previousPosition = ball.Position - (ball.Velocity);
-                        var previousRect = new Rectangle((int)previousPosition.X, (int)previousPosition.Y, ball.Width, ball.Height);
-                        if(previousRect.Top < brickRect.Bottom && previousRect.Bottom > brickRect.Top )
-                            ball.ToggleHorizontalVelocity();
-                        else
-                            ball.ToggleVerticalVelocity();
+                        HandleCornerHit(brickRect);
                     }
+
+                    CheckIsCorrect(brickRect);
+                    return;
                 }
             }
+        }
+
+        private void CheckIsCorrect(Rectangle brickRect)
+        {
+            var nextPosition = _ball.Position + (_ball.Velocity);
+            var nextRect = new Rectangle((int) nextPosition.X, (int) nextPosition.Y,
+                                             _ball.Width, _ball.Height);
+            if(brickRect.Intersects(nextRect))
+            {
+                _ball.ToggleHorizontalVelocity();
+                _ball.ToggleVerticalVelocity();
+            }
+        }
+
+        private void HandleCornerHit(Rectangle brickRect)
+        {
+            var previousPosition = _ball.Position - (_ball.Velocity);
+            var previousRect = new Rectangle((int) previousPosition.X, (int) previousPosition.Y,
+                                             _ball.Width, _ball.Height);
+            if (previousRect.Top < brickRect.Bottom && previousRect.Bottom > brickRect.Top)
+                _ball.ToggleHorizontalVelocity();
+            else
+                _ball.ToggleVerticalVelocity();
         }
     }
 }

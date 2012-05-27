@@ -60,27 +60,27 @@ namespace BallBounceMVC.Test
         public void BallBouncesDownWhenHitsTheTopSideOfFrameWithWidth11()
         {
             var firstBall = _ballsModel.GetFirstBall();
-            firstBall.Position = new Vector2(15f, 15f);
+            firstBall.Position = new Vector2(15f, 14f);
             firstBall.Velocity = new Vector2(0f, -5f);
 
             _ballsModel.Update(1.0f);
             _ballsModel.Update(1.0f);
 
             Assert.That(firstBall.Position.X, Is.EqualTo(15f));
-            Assert.That(firstBall.Position.Y, Is.EqualTo(15f));
+            Assert.That(firstBall.Position.Y, Is.EqualTo(14f));
         }
 
         [Test]
         public void BallBouncesRightWhenHitsTheLeftSideOfFrameWithWidth11()
         {
             var firstBall = _ballsModel.GetFirstBall();
-            firstBall.Position = new Vector2(15f, 15f);
+            firstBall.Position = new Vector2(14f, 15f);
             firstBall.Velocity = new Vector2(-5f, 0f);
 
             _ballsModel.Update(1.0f);
             _ballsModel.Update(1.0f);
 
-            Assert.That(firstBall.Position.X, Is.EqualTo(15f));
+            Assert.That(firstBall.Position.X, Is.EqualTo(14f));
             Assert.That(firstBall.Position.Y, Is.EqualTo(15f));
         }
 

@@ -21,38 +21,36 @@ namespace BallBounceMVC.Test
             _ballsModel = new BallsModel(_world, BoxLength, BoxLength, new Vector2(0f, 0f), new Vector2(0f, 0f));
         }
 
-        [TestCase(395f)]
+        [TestCase(383f)]
         [TestCase(400f)]
         [TestCase(410f)]
         [TestCase(420f)]
-        [TestCase(430f)]
-        [TestCase(439f)]
+        [TestCase(450f)]
+        [TestCase(459f)]
         public void Ball_TravellingUpHitsBrickBottom_ShouldReflectBack(float xPosition)
         {
             var firstBall = _ballsModel.GetFirstBall();
-            firstBall.Position = new Vector2(xPosition, 334f);
+            firstBall.Position = new Vector2(xPosition, 332f);
             firstBall.Velocity = new Vector2(0f, -4f);
 
             _ballsModel.Update(1.0f);
-            _ballsModel.Update(1.0f);
 
             Assert.That(firstBall.Velocity.Y, Is.GreaterThan(0));
-            Assert.That(firstBall.Position.Y, Is.EqualTo(334f));
+            Assert.That(firstBall.Position.Y, Is.EqualTo(332f));
         }
 
-        [TestCase(395f)]
+        [TestCase(383f)]
         [TestCase(400f)]
         [TestCase(410f)]
         [TestCase(420f)]
-        [TestCase(430f)]
-        [TestCase(439f)]
+        [TestCase(450f)]
+        [TestCase(459f)]
         public void Ball_TravellingDownHitsBrickTop_ShouldReflectBack(float xPosition)
         {
             var firstBall = _ballsModel.GetFirstBall();
             firstBall.Position = new Vector2(xPosition, 280f);
             firstBall.Velocity = new Vector2(0f, 4f);
 
-            _ballsModel.Update(1.0f);
             _ballsModel.Update(1.0f);
 
             Assert.That(firstBall.Velocity.Y, Is.LessThan(0));
@@ -72,7 +70,6 @@ namespace BallBounceMVC.Test
             firstBall.Velocity = new Vector2(4f, 0f);
 
             _ballsModel.Update(1.0f);
-            _ballsModel.Update(1.0f);
 
             Assert.That(firstBall.Velocity.X, Is.LessThan(0));
             Assert.That(firstBall.Position.X, Is.EqualTo(382f));
@@ -87,14 +84,13 @@ namespace BallBounceMVC.Test
         public void Ball_TravellingLeftHitsBrickRight_ShouldReflectBack(float yPosition)
         {
             var firstBall = _ballsModel.GetFirstBall();
-            firstBall.Position = new Vector2(444f, yPosition);
+            firstBall.Position = new Vector2(462f, yPosition);
             firstBall.Velocity = new Vector2(-4f, 0f);
 
             _ballsModel.Update(1.0f);
-            _ballsModel.Update(1.0f);
 
             Assert.That(firstBall.Velocity.X, Is.GreaterThan(0));
-            Assert.That(firstBall.Position.X, Is.EqualTo(444f));
+            Assert.That(firstBall.Position.X, Is.EqualTo(462f));
         }
 
     }

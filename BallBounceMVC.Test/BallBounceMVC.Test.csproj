@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BallsModelTests.cs" />
+    <Compile Include="LevelLoaderTests.cs" />
+    <Compile Include="LevelSerializationTests.cs" />
     <Compile Include="MultipleBrickCollisionTests.cs" />
     <Compile Include="OneBrickCollisionTests.cs" />
     <Compile Include="PlayerModelTests.cs" />
@@ -60,6 +62,11 @@
       <Project>{BAD03C5D-7986-4FB9-B463-E3B2FC4C124D}</Project>
       <Name>BallBounceMVC</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestData\1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

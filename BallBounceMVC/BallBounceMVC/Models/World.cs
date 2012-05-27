@@ -6,7 +6,7 @@ namespace BallBounceMVC.Models
 {
     public class World
     {
-        public float GameSpeed = 2.0f;
+        public float GameSpeed = 3.0f;
         private const int BoxLength = 18;
         private readonly BallsModel _ballsModel;
         private readonly Vector2 _startDirectionForNewBall = new Vector2(0.5f, -4.0f);
@@ -76,26 +76,22 @@ namespace BallBounceMVC.Models
 
         public LevelModel LoadLevel(int levelNumber)
         {
-            return new LevelWithFourBricks();
+            var levelLoader = new LevelLoader(new LevelSerializer(), _frameModel.GetInsideFrameLeft(),
+                _frameModel.GetInsideFrameRight(), _frameModel.GetInsideFrameTop());
+            
+            return levelLoader.LoadLevel(levelNumber);
         }
 
-        public LevelModel LoadLevel(LevelModel levelModel)
+        public void LoadLevel(LevelModel levelModel)
         {
-            return levelModel;
+            CurrentLevel = levelModel;
         }
 
         public void HandleLostLife()
         {
             Lives--;
 
-            if(Lives > 0)
-            {
-                CurrentState = GameState.LevelTransitionOn;
-            }
-            else
-            {
-                CurrentState = GameState.GameOver;
-            }
+            CurrentState = Lives > 0 ? GameState.LevelTransitionOn : GameState.GameOver;
         }
 
         private void RestartLevel()

@@ -7,10 +7,10 @@ namespace BallBounceMVC.Levels
     {
         public LevelWithFourBricks()
         {
-            _bricks.Add(new Brick(400, 300));
-            _bricks.Add(new Brick(440, 300));
-            _bricks.Add(new Brick(400, 330));
-            _bricks.Add(new Brick(440, 330));
+            Bricks.Add(new Brick(400, 300));
+            Bricks.Add(new Brick(440, 300));
+            Bricks.Add(new Brick(400, 330));
+            Bricks.Add(new Brick(440, 330));
         }
     }
 }

@@ -6,7 +6,7 @@ namespace BallBounceMVC.Models
     public class FrameModel : Model
     {
         private readonly Rectangle _topWall, _leftWall, _rightWall;
-        private const int WallWidth = 11;
+        private const int WallWidth = 10;
 
         public FrameModel(World world)
             : base(world)
@@ -43,6 +43,21 @@ namespace BallBounceMVC.Models
         public Rectangle GetRightWallRectangle()
         {
             return _rightWall;
+        }
+
+        public int GetInsideFrameLeft()
+        {
+            return _leftWall.Right;
+        }
+
+        public int GetInsideFrameRight()
+        {
+            return _rightWall.Left;
+        }
+
+        public int GetInsideFrameTop()
+        {
+            return _topWall.Bottom;
         }
 
         public bool IntersectsWithLeftWall(Rectangle ballRectangle)
