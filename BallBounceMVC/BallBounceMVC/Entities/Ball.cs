@@ -6,7 +6,7 @@ namespace BallBounceMVC.Entities
 {
     public class Ball : GameObject
     {
-        private readonly BallAndBrickCollisionHandler brickCollisionHandler;
+        private readonly BallAndBrickCollisionHandler _brickCollisionHandler;
         public int Width { get; set; }
         public int Height { get; set; }
 
@@ -16,7 +16,7 @@ namespace BallBounceMVC.Entities
             Height = height;
             Position = startPosition;
             Velocity = startDirection;
-            brickCollisionHandler = new BallAndBrickCollisionHandler(this);
+            _brickCollisionHandler = new BallAndBrickCollisionHandler(this);
         }
 
         public void HandleCollisionWithAnyGameObject(World world)
@@ -28,7 +28,7 @@ namespace BallBounceMVC.Entities
             var player = world.GetPlayerModel();
             HandlePlayerAndBallCollision(ballRectangle, player);
 
-            brickCollisionHandler.HandleBrickAndBallCollisions(ballRectangle, world.CurrentLevel.GetBricks());
+            _brickCollisionHandler.HandleBrickAndBallCollisions(ballRectangle, world.CurrentLevel.GetBricks());
         }
 
         private void HandlePlayerAndBallCollision(Rectangle ballRectangle, PlayerModel player)

@@ -3,14 +3,14 @@ using BallBounceMVC.Models;
 
 namespace BallBounceMVC.Levels
 {
-    public class LevelWithFourBricks: LevelModel
+    public class LevelWithFourBricks : LevelModel
     {
         public LevelWithFourBricks()
         {
-            Bricks.Add(new Brick(400, 300));
-            Bricks.Add(new Brick(440, 300));
-            Bricks.Add(new Brick(400, 330));
-            Bricks.Add(new Brick(440, 330));
+            Bricks.Add(new Brick(400, 300) { ColumnNumber = 0, RowNumber = 1 });
+            Bricks.Add(new Brick(460, 300) { ColumnNumber = 1, RowNumber = 1 });
+            Bricks.Add(new Brick(400, 330) { ColumnNumber = 0, RowNumber = 2 });
+            Bricks.Add(new Brick(460, 330) { ColumnNumber = 1, RowNumber = 2 });
         }
     }
 }

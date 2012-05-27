@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 
 namespace BallBounceMVC.Entities
@@ -19,28 +20,61 @@ namespace BallBounceMVC.Entities
                 var brickRect = brick.Boundary;
                 if (brickRect.Intersects(ballRectangle))
                 {
-                    var intersection = Rectangle.Intersect(brickRect, ballRectangle);
-
-                    int halfBallWidth = _ball.Width/2;
-                    if(intersection.Height >= halfBallWidth || intersection.Width >= halfBallWidth)
+                    if (CheckForHitOnSameRowNeighbour(ballRectangle, allBricks, brick))
                     {
-                        if (intersection.Height > intersection.Width)
-                        {
-                            _ball.ToggleHorizontalVelocity();
-                        }
-                        else
-                        {
-                            _ball.ToggleVerticalVelocity();
-                        }
-                    }
-                    else
-                    {
-                        HandleCornerHit(brickRect);
+                        _ball.ToggleVerticalVelocity();
+                        return;
                     }
 
+                    if (CheckForHitOnSameColumnNeighbour(ballRectangle, allBricks, brick))
+                    {
+                        _ball.ToggleHorizontalVelocity();
+                        return;
+                    }
+
+                    HandleSingleBrickCollision(ballRectangle, brickRect);
                     CheckIsCorrect(brickRect);
+
                     return;
                 }
+            }
+        }
+
+        private bool CheckForHitOnSameColumnNeighbour(Rectangle ballRectangle, IEnumerable<Brick> allBricks, Brick brick)
+        {
+            Brick neighbour = allBricks
+                .FirstOrDefault(b => b.ColumnNumber == brick.ColumnNumber && b.RowNumber == (brick.RowNumber + 1));
+
+            return neighbour != null && neighbour.Boundary.Intersects(ballRectangle);
+        }
+
+        private bool CheckForHitOnSameRowNeighbour(Rectangle ballRectangle, IEnumerable<Brick> allBricks, Brick brick)
+        {
+            Brick neighbour = allBricks
+                .FirstOrDefault(b => b.RowNumber == brick.RowNumber && b.ColumnNumber == (brick.ColumnNumber + 1));
+
+            return neighbour != null && neighbour.Boundary.Intersects(ballRectangle);
+        }
+
+        private void HandleSingleBrickCollision(Rectangle ballRectangle, Rectangle brickRect)
+        {
+            var intersection = Rectangle.Intersect(brickRect, ballRectangle);
+
+            int halfBallWidth = _ball.Width/2;
+            if (intersection.Height >= halfBallWidth || intersection.Width >= halfBallWidth)
+            {
+                if (intersection.Height > intersection.Width)
+                {
+                    _ball.ToggleHorizontalVelocity();
+                }
+                else
+                {
+                    _ball.ToggleVerticalVelocity(); 
+                }
+            }
+            else
+            {
+                HandleCornerHit(brickRect);
             }
         }
 

@@ -22,18 +22,59 @@ namespace BallBounceMVC.Test
         }
 
         [Test]
-        public void Ball_TravellingUpHitsTwoBricks_ShouldReflectBack()
+        public void Ball_TravellingUpHitsTwoBricks_ShouldReflectBackOnlyOnYAxis()
         {
             var firstBall = _ballsModel.GetFirstBall();
-            firstBall.Position = new Vector2(428, 333f);
+            firstBall.Position = new Vector2(458, 363f);
             firstBall.Velocity = new Vector2(1f, -4f);
 
-            _ballsModel.Update(1.0f);
             _ballsModel.Update(1.0f);
 
             Assert.That(firstBall.Velocity.Y, Is.GreaterThan(0));
             Assert.That(firstBall.Velocity.X, Is.EqualTo(1f));
-            Assert.That(firstBall.Position.Y, Is.EqualTo(333f));
+            Assert.That(firstBall.Position.Y, Is.EqualTo(363f));
+        }
+
+        [Test]
+        public void Ball_TravellingDownHitsTwoBricks_ShouldReflectBackOnlyOnYAxis()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(458, 280f);
+            firstBall.Velocity = new Vector2(1f, 4f);
+
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.Y, Is.LessThan(0));
+            Assert.That(firstBall.Velocity.X, Is.EqualTo(1f));
+            Assert.That(firstBall.Position.Y, Is.EqualTo(280f));
+        }
+
+        [Test]
+        public void Ball_TravellingRightHitsTwoBricks_ShouldReflectBackOnlyOnXAxis()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(380f, 328f);
+            firstBall.Velocity = new Vector2(4f, 1f);
+
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.LessThan(0));
+            Assert.That(firstBall.Velocity.Y, Is.EqualTo(1f));
+            Assert.That(firstBall.Position.X, Is.EqualTo(380f));
+        }
+
+        [Test]
+        public void Ball_TravellingLeftHitsTwoBricks_ShouldReflectBackOnlyOnXAxis()
+        {
+            var firstBall = _ballsModel.GetFirstBall();
+            firstBall.Position = new Vector2(522f, 328f);
+            firstBall.Velocity = new Vector2(-4f, 1f);
+
+            _ballsModel.Update(1.0f);
+
+            Assert.That(firstBall.Velocity.X, Is.GreaterThan(0));
+            Assert.That(firstBall.Velocity.Y, Is.EqualTo(1f));
+            Assert.That(firstBall.Position.X, Is.EqualTo(522f));
         }
     }
 }

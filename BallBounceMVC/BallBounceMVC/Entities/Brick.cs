@@ -6,6 +6,8 @@ namespace BallBounceMVC.Entities
     {
         private const int BrickWidth = 60;
         private const int BrickHeight = 30;
+        public int ColumnNumber { get; set; }
+        public int RowNumber { get; set; }
         
         public Brick(int x, int y)
         {

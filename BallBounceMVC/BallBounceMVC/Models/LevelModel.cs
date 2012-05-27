@@ -23,7 +23,7 @@ namespace BallBounceMVC.Models
 
         public void AddBrick(BrickData brickData, int xPos, int yPos)
         {
-            var brick = new Brick(xPos, yPos);
+            var brick = new Brick(xPos, yPos) {ColumnNumber = brickData.ColumnNumber, RowNumber = brickData.RowNumber};
             Bricks.Add(brick);
         }
     }
