@@ -107,7 +107,14 @@
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Content\Frame\titanium.xnb" />
+    <None Include="Content\Sprites\bluesquare.xnb" />
+    <None Include="Content\Sprites\PlayerShip.xnb" />
+    <None Include="Content\Sprites\redsquare.xnb" />
+    <None Include="Content\Sprites\SilverBall.xnb" />
+    <None Include="Content\Sprites\yellowsquare.xnb" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\InfoFont.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
