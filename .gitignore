@@ -13,3 +13,4 @@ db.sqlite
 *.pidb
 *.userprefs
 *.csproj.Debug.cachefile
+TestResults

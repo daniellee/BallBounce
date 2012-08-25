@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC4C46A5-38C0-4BCD-9E4D-10BB7DDB07C1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BallBounce</RootNamespace>
+    <AssemblyName>BallBounce</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BallBounceGame.cs" />
+    <Compile Include="Controllers\ModelController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Entities\Ball.cs" />
+    <Compile Include="Entities\BallAndBrickCollisionHandler.cs" />
+    <Compile Include="Entities\Brick.cs" />
+    <Compile Include="Entities\BrickData.cs" />
+    <Compile Include="Entities\GameObject.cs" />
+    <Compile Include="Entities\GameState.cs" />
+    <Compile Include="Levels\ILevelDeserialize.cs" />
+    <Compile Include="Levels\LevelData.cs" />
+    <Compile Include="Levels\LevelLoader.cs" />
+    <Compile Include="Levels\LevelSerializer.cs" />
+    <Compile Include="Levels\LevelWithFourBricks.cs" />
+    <Compile Include="Levels\LevelWithOneBrick.cs" />
+    <Compile Include="Models\BallsModel.cs" />
+    <Compile Include="Models\FrameModel.cs" />
+    <Compile Include="Models\LevelModel.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\PlayerModel.cs" />
+    <Compile Include="Models\ShipZones.cs" />
+    <Compile Include="Models\World.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\BallsViewer.cs" />
+    <Compile Include="Views\FrameViewer.cs" />
+    <Compile Include="Views\LevelViewer.cs" />
+    <Compile Include="Views\PlayerViewer.cs" />
+    <Compile Include="Views\Viewer.cs" />
+    <Compile Include="Views\WorldViewer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Lidgren.Network.Windows">
+      <HintPath>..\lib\Lidgren.Network.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework.Windows">
+      <HintPath>..\lib\MonoGame.Framework.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\lib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.9.5\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tao.Sdl">
+      <HintPath>..\lib\Tao.Sdl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Frame\titanium.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\bluesquare.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\PlayerShip.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\redsquare.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\SilverBall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites\yellowsquare.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\Fonts\InfoFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Levels\1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
