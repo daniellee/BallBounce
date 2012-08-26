@@ -14,3 +14,5 @@ db.sqlite
 *.userprefs
 *.csproj.Debug.cachefile
 TestResults
+*.vspx
+*.psess
