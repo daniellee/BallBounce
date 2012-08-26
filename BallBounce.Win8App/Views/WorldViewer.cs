@@ -23,5 +23,11 @@ namespace BallBounce.Views
             var scorePos = new Vector2(_world.GetViewport().Right - 150, _world.GetViewport().Bottom - 30);
             spriteBatch.DrawString(_infoFont, string.Format("Score: {0}", 0), scorePos, Color.Yellow);
         }
+
+        public void Draw(SpriteBatch spriteBatch, bool isRunningSlowly)
+        {
+            spriteBatch.DrawString(_infoFont, string.Format("IsRunningSlowly: {0}", isRunningSlowly.ToString()), new Vector2(_world.GetViewport().Left + 40, _world.GetViewport().Bottom - 30), Color.Yellow);
+            Draw(spriteBatch);
+        }
     }
 }

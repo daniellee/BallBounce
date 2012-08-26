@@ -29,7 +29,7 @@ namespace BallBounce
 
         public BallBounceGame()
         {
-            _graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = 800, PreferredBackBufferHeight = 600 };
+            _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
@@ -98,7 +98,7 @@ namespace BallBounce
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             _world.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -116,7 +116,7 @@ namespace BallBounce
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-            _worldViewer.Draw(_spriteBatch);
+            _worldViewer.Draw(_spriteBatch, gameTime.IsRunningSlowly);
             _frameViewer.Draw(_spriteBatch);
             _levelViewer.Draw(_spriteBatch);
             _ballsViewer.Draw(_spriteBatch);

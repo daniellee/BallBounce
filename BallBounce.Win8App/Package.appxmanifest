@@ -1,40 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-
-  <Identity Name="b0bbcca5-e7ba-443f-a962-808d540aa9a2"
-            Publisher="CN=Daniel"
-            Version="1.0.0.0" />
-
+  <Identity Name="b0bbcca5-e7ba-443f-a962-808d540aa9a2" Publisher="CN=Daniel" Version="1.0.0.0" />
   <Properties>
     <DisplayName>BallBounce.Win8App</DisplayName>
     <PublisherDisplayName>Daniel</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
     <Description>BallBounce.Win8App</Description>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.2</OSMinVersion>
     <OSMaxVersionTested>6.2</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="BallBounce.Win8App.App">
-        <VisualElements
-            DisplayName="BallBounce.Win8App"
-            Logo="Assets\Logo.png"
-            SmallLogo="Assets\SmallLogo.png"
-            Description="BallBounce.Win8App"
-            ForegroundText="light"
-            BackgroundColor="#222222">
-            <DefaultTile ShowName="allLogos" />
-            <SplashScreen Image="Assets\SplashScreen.png" />
-        </VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="BallBounce.Win8App.App">
+      <VisualElements DisplayName="BallBounce.Win8App" Logo="Content\Logo.png" SmallLogo="Content\SmallLogo.png" Description="BallBounce.Win8App" ForegroundText="light" BackgroundColor="#222222">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Content\SplashScreen.png" />
+      </VisualElements>
     </Application>
   </Applications>
   <Capabilities>
