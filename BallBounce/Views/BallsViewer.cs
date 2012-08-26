@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using BallBounce.Entities;
+using BallBounceLogic.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

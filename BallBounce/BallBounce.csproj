@@ -38,25 +38,6 @@
     <Compile Include="BallBounceGame.cs" />
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
-    <Compile Include="Entities\Ball.cs" />
-    <Compile Include="Entities\BallAndBrickCollisionHandler.cs" />
-    <Compile Include="Entities\Brick.cs" />
-    <Compile Include="Entities\BrickData.cs" />
-    <Compile Include="Entities\GameObject.cs" />
-    <Compile Include="Entities\GameState.cs" />
-    <Compile Include="Levels\ILevelDeserialize.cs" />
-    <Compile Include="Levels\LevelData.cs" />
-    <Compile Include="Levels\LevelLoader.cs" />
-    <Compile Include="Levels\LevelSerializer.cs" />
-    <Compile Include="Levels\LevelWithFourBricks.cs" />
-    <Compile Include="Levels\LevelWithOneBrick.cs" />
-    <Compile Include="Models\BallsModel.cs" />
-    <Compile Include="Models\FrameModel.cs" />
-    <Compile Include="Models\LevelModel.cs" />
-    <Compile Include="Models\Model.cs" />
-    <Compile Include="Models\PlayerModel.cs" />
-    <Compile Include="Models\ShipZones.cs" />
-    <Compile Include="Models\World.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\BallsViewer.cs" />
@@ -122,6 +103,12 @@
     <Content Include="Content\Levels\1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BallBounceLogic\BallBounceLogic.csproj">
+      <Project>{b23ce3e1-3486-441d-86b6-3cbf01584698}</Project>
+      <Name>BallBounceLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

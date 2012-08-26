@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallBounce", "BallBounce\Ba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallBounce.Test", "BallBounce.Test\BallBounce.Test.csproj", "{5A4367AB-140E-45EA-8817-306220D5B3F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallBounceLogic", "BallBounceLogic\BallBounceLogic.csproj", "{B23CE3E1-3486-441D-86B6-3CBF01584698}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{5A4367AB-140E-45EA-8817-306220D5B3F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5A4367AB-140E-45EA-8817-306220D5B3F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5A4367AB-140E-45EA-8817-306220D5B3F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B23CE3E1-3486-441D-86B6-3CBF01584698}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
