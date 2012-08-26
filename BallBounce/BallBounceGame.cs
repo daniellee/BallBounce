@@ -1,9 +1,9 @@
-using BallBounce.Controllers;
-using BallBounce.Models;
+using BallBounceLogic.Models;
 using BallBounce.Views;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using BallBounce.Controllers;
 
 namespace BallBounce
 {

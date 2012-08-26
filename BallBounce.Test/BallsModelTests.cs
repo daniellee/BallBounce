@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using BallBounce.Models;
+using BallBounceLogic.Models;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
-namespace BallBounce.Test
+namespace BallBounceLogic.Test
 {
     [TestFixture]
     public class BallsModelTests

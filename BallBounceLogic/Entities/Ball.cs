@@ -1,8 +1,8 @@
 using System;
-using BallBounce.Models;
+using BallBounceLogic.Models;
 using Microsoft.Xna.Framework;
 
-namespace BallBounce.Entities
+namespace BallBounceLogic.Entities
 {
     public class Ball : GameObject
     {

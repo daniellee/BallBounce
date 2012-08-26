@@ -2,7 +2,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using ServiceStack.Text;
 
-namespace BallBounce.Levels
+namespace BallBounceLogic.Levels
 {
     public class LevelSerializer : ILevelDeserialize
     {

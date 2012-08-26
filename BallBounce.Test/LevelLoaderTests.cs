@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using BallBounce.Levels;
+using BallBounceLogic.Levels;
 using Moq;
 using NUnit.Framework;
 
-namespace BallBounce.Test
+namespace BallBounceLogic.Test
 {
     public class LevelLoaderTests
     {

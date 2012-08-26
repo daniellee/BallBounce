@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5A4367AB-140E-45EA-8817-306220D5B3F0}</ProjectGuid>
+    <ProjectGuid>{B23CE3E1-3486-441D-86B6-3CBF01584698}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BallBounce.Test</RootNamespace>
-    <AssemblyName>BallBounceMVC.Test</AssemblyName>
+    <RootNamespace>BallBounce</RootNamespace>
+    <AssemblyName>BallBounceLogic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,11 +34,8 @@
     <Reference Include="MonoGame.Framework.Windows">
       <HintPath>..\lib\MonoGame.Framework.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.3.1.416.3\lib\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.5.7.10213\lib\nunit.framework.dll</HintPath>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.9.5\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,25 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BallsModelTests.cs" />
-    <Compile Include="LevelLoaderTests.cs" />
-    <Compile Include="LevelSerializationTests.cs" />
-    <Compile Include="MultipleBrickCollisionTests.cs" />
-    <Compile Include="OneBrickCollisionTests.cs" />
-    <Compile Include="PlayerModelTests.cs" />
+    <Compile Include="Entities\Ball.cs" />
+    <Compile Include="Entities\BallAndBrickCollisionHandler.cs" />
+    <Compile Include="Entities\Brick.cs" />
+    <Compile Include="Entities\BrickData.cs" />
+    <Compile Include="Entities\GameObject.cs" />
+    <Compile Include="Entities\GameState.cs" />
+    <Compile Include="Levels\ILevelDeserialize.cs" />
+    <Compile Include="Levels\LevelData.cs" />
+    <Compile Include="Levels\LevelLoader.cs" />
+    <Compile Include="Levels\LevelSerializer.cs" />
+    <Compile Include="Levels\LevelWithFourBricks.cs" />
+    <Compile Include="Levels\LevelWithOneBrick.cs" />
+    <Compile Include="Models\BallsModel.cs" />
+    <Compile Include="Models\FrameModel.cs" />
+    <Compile Include="Models\LevelModel.cs" />
+    <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\PlayerModel.cs" />
+    <Compile Include="Models\ShipZones.cs" />
+    <Compile Include="Models\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorldTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TestData\1.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BallBounceLogic\BallBounceLogic.csproj">
-      <Project>{b23ce3e1-3486-441d-86b6-3cbf01584698}</Project>
-      <Name>BallBounceLogic</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.Xna.Framework;
 
-namespace BallBounce.Entities
+namespace BallBounceLogic.Entities
 {
     public class BallAndBrickCollisionHandler
     {

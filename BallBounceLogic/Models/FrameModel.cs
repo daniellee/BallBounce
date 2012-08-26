@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 
-namespace BallBounce.Models
+namespace BallBounceLogic.Models
 {
     public class FrameModel : Model
     {
