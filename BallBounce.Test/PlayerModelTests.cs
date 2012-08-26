@@ -1,7 +1,7 @@
-using BallBounce.Models;
+using BallBounceLogic.Models;
 using NUnit.Framework;
 
-namespace BallBounce.Test
+namespace BallBounceLogic.Test
 {
     [TestFixture]
     public class PlayerModelTests

@@ -1,4 +1,4 @@
-using BallBounce.Models;
+using BallBounceLogic.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

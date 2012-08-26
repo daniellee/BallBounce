@@ -1,4 +1,4 @@
-﻿namespace BallBounce.Entities
+﻿namespace BallBounceLogic.Entities
 {
     public class BrickData
     {

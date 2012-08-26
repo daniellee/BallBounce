@@ -1,8 +1,8 @@
 using System;
-using BallBounce.Entities;
+using BallBounceLogic.Entities;
 using Microsoft.Xna.Framework;
 
-namespace BallBounce.Models
+namespace BallBounceLogic.Models
 {
     public class PlayerModel : Model
     {

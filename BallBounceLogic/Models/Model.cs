@@ -1,4 +1,4 @@
-namespace BallBounce.Models
+namespace BallBounceLogic.Models
 {
     public abstract class Model
     {

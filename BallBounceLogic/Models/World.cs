@@ -1,8 +1,8 @@
-using BallBounce.Entities;
-using BallBounce.Levels;
+using BallBounceLogic.Entities;
+using BallBounceLogic.Levels;
 using Microsoft.Xna.Framework;
 
-namespace BallBounce.Models
+namespace BallBounceLogic.Models
 {
     public class World
     {

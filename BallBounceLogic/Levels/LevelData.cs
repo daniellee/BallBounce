@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using BallBounce.Entities;
+using BallBounceLogic.Entities;
 
-namespace BallBounce.Levels
+namespace BallBounceLogic.Levels
 {
     public class LevelData
     {

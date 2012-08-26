@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using BallBounce.Entities;
+using BallBounceLogic.Entities;
 
-namespace BallBounce.Models
+namespace BallBounceLogic.Models
 {
     public class LevelModel
     {

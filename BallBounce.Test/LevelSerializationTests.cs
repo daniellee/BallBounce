@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using BallBounce.Levels;
+using BallBounceLogic.Levels;
 using NUnit.Framework;
 
-namespace BallBounce.Test
+namespace BallBounceLogic.Test
 {
     [TestFixture]
     public class LevelSerializationTests

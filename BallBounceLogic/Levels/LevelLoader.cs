@@ -1,6 +1,6 @@
-﻿using BallBounce.Models;
+﻿using BallBounceLogic.Models;
 
-namespace BallBounce.Levels
+namespace BallBounceLogic.Levels
 {
     public class LevelLoader
     {

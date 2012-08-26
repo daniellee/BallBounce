@@ -1,4 +1,4 @@
-namespace BallBounce.Levels
+namespace BallBounceLogic.Levels
 {
     public interface ILevelDeserialize
     {
