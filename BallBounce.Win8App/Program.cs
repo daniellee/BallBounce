@@ -14,7 +14,7 @@ namespace BallBounce.Win8App
         /// </summary>
         static void Main()
         {
-            var factory = new MonoGame.Framework.GameFrameworkViewSource<Game1>();
+            var factory = new MonoGame.Framework.GameFrameworkViewSource<BallBounceGame>();
             Windows.ApplicationModel.Core.CoreApplication.Run(factory);
         }
     }

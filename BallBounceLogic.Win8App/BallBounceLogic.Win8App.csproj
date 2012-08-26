@@ -4,17 +4,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A3781D7B-11D3-47FB-B624-CE7561DCF3FE}</ProjectGuid>
-    <OutputType>AppContainerExe</OutputType>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5AF9317E-9457-44A9-BFDB-B67F90F2691C}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BallBounce.Win8App</RootNamespace>
-    <AssemblyName>BallBounce.Win8App</AssemblyName>
+    <RootNamespace>BallBounceLogic.Win8App</RootNamespace>
+    <AssemblyName>BallBounceLogic.Win8App</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +25,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,7 +41,6 @@
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
@@ -53,7 +52,6 @@
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
@@ -65,7 +63,6 @@
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -77,7 +74,6 @@
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -89,7 +85,6 @@
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
@@ -101,100 +96,72 @@
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>ExpressRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BallBounceGame.cs" />
-    <Compile Include="Controllers\ModelController.cs" />
-    <Compile Include="Controllers\PlayerController.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="..\BallBounceLogic\Entities\Ball.cs">
+      <Link>Entities\Ball.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Entities\BallAndBrickCollisionHandler.cs">
+      <Link>Entities\BallAndBrickCollisionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Entities\Brick.cs">
+      <Link>Entities\Brick.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Entities\BrickData.cs">
+      <Link>Entities\BrickData.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Entities\GameObject.cs">
+      <Link>Entities\GameObject.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Entities\GameState.cs">
+      <Link>Entities\GameState.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Levels\ILevelDeserialize.cs">
+      <Link>Levels\ILevelDeserialize.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Levels\LevelData.cs">
+      <Link>Levels\LevelData.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Levels\LevelLoader.cs">
+      <Link>Levels\LevelLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Levels\LevelWithFourBricks.cs">
+      <Link>Levels\LevelWithFourBricks.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Levels\LevelWithOneBrick.cs">
+      <Link>Levels\LevelWithOneBrick.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Models\BallsModel.cs">
+      <Link>Models\BallsModel.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Models\FrameModel.cs">
+      <Link>Models\FrameModel.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Models\LevelModel.cs">
+      <Link>Models\LevelModel.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Models\Model.cs">
+      <Link>Models\Model.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Models\PlayerModel.cs">
+      <Link>Models\PlayerModel.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Models\ShipZones.cs">
+      <Link>Models\ShipZones.cs</Link>
+    </Compile>
+    <Compile Include="..\BallBounceLogic\Models\World.cs">
+      <Link>Models\World.cs</Link>
+    </Compile>
+    <Compile Include="Levels\LevelSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\BallsViewer.cs" />
-    <Compile Include="Views\FrameViewer.cs" />
-    <Compile Include="Views\LevelViewer.cs" />
-    <Compile Include="Views\PlayerViewer.cs" />
-    <Compile Include="Views\Viewer.cs" />
-    <Compile Include="Views\WorldViewer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\Frame\titanium.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SmallLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\SplashScreen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\bluesquare.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\PlayerShip.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\redsquare.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\SilverBall.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\yellowsquare.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\StoreLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework.Windows8">
       <HintPath>..\lib\Win8\MonoGame.Framework.Windows8.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\Fonts\InfoFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Levels\1.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\Frame\titanium.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\bluesquare.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\PlayerShip.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\redsquare.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\SilverBall.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Sprites\yellowsquare.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BallBounceLogic.Win8App\BallBounceLogic.Win8App.csproj">
-      <Project>{5af9317e-9457-44a9-bfdb-b67f90f2691c}</Project>
-      <Name>BallBounceLogic.Win8App</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' ">
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
