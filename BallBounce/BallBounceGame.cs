@@ -29,8 +29,8 @@ namespace BallBounce
 
         public BallBounceGame()
         {
-            _graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = 1920, PreferredBackBufferHeight = 1080 };
-            _graphics.IsFullScreen = true;
+            _graphics = new GraphicsDeviceManager(this)
+                {PreferredBackBufferWidth = 1920, PreferredBackBufferHeight = 1080, IsFullScreen = true};
             Content.RootDirectory = "Content";
         }
 
@@ -56,7 +56,7 @@ namespace BallBounce
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            float screenscale = (float)_graphics.GraphicsDevice.Viewport.Width / 1024f;
+            float screenscale = _graphics.GraphicsDevice.Viewport.Width / 1024f;
 
 
             _world = new World(_graphics.GraphicsDevice.Viewport.Width, _graphics.GraphicsDevice.Viewport.Height, screenscale);
