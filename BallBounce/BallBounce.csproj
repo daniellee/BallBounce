@@ -38,6 +38,7 @@
     <Compile Include="BallBounceGame.cs" />
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="FPSCounterComponent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\BallsViewer.cs" />

@@ -17,7 +17,7 @@ namespace BallBounce.Views
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_playerTexture, _playerModel.GetShip(), Color.White);
+            spriteBatch.Draw(_playerTexture, _playerModel.GetShip(), new Rectangle(0,0, 210, 40), Color.White, 0, new Vector2(0, 0), SpriteEffects.None, 0);
         }
     }
 }

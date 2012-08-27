@@ -55,7 +55,10 @@ namespace BallBounce
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _world = new World(_graphics.GraphicsDevice.Viewport.Width, _graphics.GraphicsDevice.Viewport.Height);
+            float screenscale = (float)_graphics.GraphicsDevice.Viewport.Width / 800f;
+
+
+            _world = new World(_graphics.GraphicsDevice.Viewport.Width, _graphics.GraphicsDevice.Viewport.Height, screenscale);
 
             BallsModel ballsModel = _world.GetBallsModel();
             _ballTexture = Content.Load<Texture2D>("Sprites\\SilverBall");
@@ -75,6 +78,8 @@ namespace BallBounce
 
             _yellowSquareTexture = Content.Load<Texture2D>("Sprites\\yellowsquare");
             _levelViewer = new LevelViewer(_world, _yellowSquareTexture);
+            var fps = new FPSCounterComponent(this, _spriteBatch, infoFont);
+            Components.Add(fps);
         }
 
         /// <summary>
@@ -98,7 +103,7 @@ namespace BallBounce
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             _world.Update((float)gameTime.ElapsedGameTime.TotalSeconds);

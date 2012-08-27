@@ -18,7 +18,7 @@ namespace BallBounceLogic.Models
         private readonly Vector2 _startPositionForNewBall = new Vector2(400f, 400f);
         public GameState CurrentState = GameState.LevelTransitionOn;
 
-        public World(int viewportWidth, int viewportHeight)
+        public World(int viewportWidth, int viewportHeight, float scale)
         {
             _viewportRect = new Rectangle(0, 0,
                 viewportWidth,
