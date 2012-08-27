@@ -14,7 +14,7 @@ namespace BallBounceLogic.Test
         {
             _world = new World(800, 600, 1f) { GameSpeed = 1f };
 
-            _playerModel = new PlayerModel(_world);
+            _playerModel = new PlayerModel(_world, 1f);
         }
 
         [Test]

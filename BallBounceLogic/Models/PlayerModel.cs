@@ -12,7 +12,7 @@ namespace BallBounceLogic.Models
         private readonly World _world;
         private ShipZones _zones;
 
-        public PlayerModel(World world)
+        public PlayerModel(World world, float scale)
             : base(world)
         {
             _world = world;
@@ -21,7 +21,7 @@ namespace BallBounceLogic.Models
             var viewport = world.GetViewport();
             _ship = new Rectangle(viewport.Center.X,
                     (viewport.Bottom - viewport.Height / 8),
-                    _width, _height);
+                    (int)(_width * scale), (int)(_height * scale));
         }
 
         public override void Update(float relativeDifference)

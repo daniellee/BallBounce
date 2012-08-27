@@ -8,14 +8,15 @@ namespace BallBounceLogic.Levels
         private readonly int _insideFrameLeft;
         private readonly int _insideFrameRight;
         private readonly int _insideFrameTop;
+        private readonly float _scale;
 
-        public LevelLoader(ILevelDeserialize levelSerializer, int insideFrameLeft, int insideFrameRight, 
-            int insideFrameTop)
+        public LevelLoader(ILevelDeserialize levelSerializer, int insideFrameLeft, int insideFrameRight, int insideFrameTop, float scale)
         {
             _levelSerializer = levelSerializer;
             _insideFrameLeft = insideFrameLeft;
             _insideFrameRight = insideFrameRight;
             _insideFrameTop = insideFrameTop;
+            _scale = scale;
         }
 
         public LevelModel LoadLevel(int levelNumber)
@@ -28,7 +29,8 @@ namespace BallBounceLogic.Levels
             {
                 level.AddBrick(brickData, 
                     ConvertColumnNumberToXPosition(brickData.ColumnNumber), 
-                    ConvertRowNumberToYPosition(brickData.RowNumber));
+                    ConvertRowNumberToYPosition(brickData.RowNumber),
+                    _scale);
             }
 
             return level;

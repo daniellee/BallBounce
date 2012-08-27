@@ -21,9 +21,9 @@ namespace BallBounceLogic.Models
             return Bricks;
         }
 
-        public void AddBrick(BrickData brickData, int xPos, int yPos)
+        public void AddBrick(BrickData brickData, int xPos, int yPos, float scale)
         {
-            var brick = new Brick(xPos, yPos) {ColumnNumber = brickData.ColumnNumber, RowNumber = brickData.RowNumber};
+            var brick = new Brick(xPos, yPos, scale) {ColumnNumber = brickData.ColumnNumber, RowNumber = brickData.RowNumber};
             Bricks.Add(brick);
         }
     }

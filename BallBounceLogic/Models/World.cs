@@ -7,7 +7,7 @@ namespace BallBounceLogic.Models
     public class World
     {
         public float GameSpeed = 3.0f;
-        private const int BoxLength = 18;
+        private readonly float _boxLength = 18f;
         private readonly BallsModel _ballsModel;
         private readonly Vector2 _startDirectionForNewBall = new Vector2(0.5f, -4.0f);
         private readonly Rectangle _viewportRect;
@@ -15,18 +15,21 @@ namespace BallBounceLogic.Models
         private readonly PlayerModel _playerModel;
         public LevelModel CurrentLevel;
         private int _lives = 3;
-        private readonly Vector2 _startPositionForNewBall = new Vector2(400f, 400f);
+        private readonly Vector2 _startPositionForNewBall;
         public GameState CurrentState = GameState.LevelTransitionOn;
 
         public World(int viewportWidth, int viewportHeight, float scale)
         {
+            _boxLength *= scale;
+            _startPositionForNewBall = new Vector2(viewportWidth / 2f, (viewportHeight/3f) * 2f);
+
             _viewportRect = new Rectangle(0, 0,
                 viewportWidth,
                 viewportHeight);
-            _ballsModel = new BallsModel(this, BoxLength, BoxLength, _startPositionForNewBall, _startDirectionForNewBall);
+            _ballsModel = new BallsModel(this, (int)_boxLength, (int)_boxLength, _startPositionForNewBall, _startDirectionForNewBall);
             _frameModel = new FrameModel(this);
-            _playerModel = new PlayerModel(this);
-            CurrentLevel = LoadLevel(1);
+            _playerModel = new PlayerModel(this, scale);
+            CurrentLevel = LoadLevel(1, scale);
             CurrentState = GameState.Normal;
         }
 
@@ -74,10 +77,10 @@ namespace BallBounceLogic.Models
             }
         }
 
-        public LevelModel LoadLevel(int levelNumber)
+        public LevelModel LoadLevel(int levelNumber, float scale)
         {
             var levelLoader = new LevelLoader(new LevelSerializer(), _frameModel.GetInsideFrameLeft(),
-                _frameModel.GetInsideFrameRight(), _frameModel.GetInsideFrameTop());
+                _frameModel.GetInsideFrameRight(), _frameModel.GetInsideFrameTop(), scale);
             
             return levelLoader.LoadLevel(levelNumber);
         }
@@ -96,7 +99,7 @@ namespace BallBounceLogic.Models
 
         private void RestartLevel()
         {
-            _ballsModel.Add(new Ball(BoxLength, BoxLength, _startPositionForNewBall, _startDirectionForNewBall));
+            _ballsModel.Add(new Ball((int)_boxLength, (int)_boxLength, _startPositionForNewBall, _startDirectionForNewBall));
             _playerModel.CenterShip(); 
             CurrentState = GameState.LevelTransitionOff;
         }

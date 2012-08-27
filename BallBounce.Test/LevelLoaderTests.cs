@@ -16,7 +16,7 @@ namespace BallBounceLogic.Test
         public void SetUp()
         {
             _levelDeserializer = new Mock<ILevelDeserialize>();
-            _levelLoader = new LevelLoader(_levelDeserializer.Object, FrameWidth, ViewPortWidth - FrameWidth, FrameWidth);
+            _levelLoader = new LevelLoader(_levelDeserializer.Object, FrameWidth, ViewPortWidth - FrameWidth, FrameWidth, 1f);
         }
 
         [Test]

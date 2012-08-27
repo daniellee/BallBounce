@@ -29,7 +29,7 @@ namespace BallBounce
 
         public BallBounceGame()
         {
-            _graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = 800, PreferredBackBufferHeight = 600 };
+            _graphics = new GraphicsDeviceManager(this) { PreferredBackBufferWidth = 1024, PreferredBackBufferHeight = 768 };
             Content.RootDirectory = "Content";
         }
 

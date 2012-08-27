@@ -9,9 +9,9 @@ namespace BallBounceLogic.Entities
         public int ColumnNumber { get; set; }
         public int RowNumber { get; set; }
         
-        public Brick(int x, int y)
+        public Brick(int x, int y, float scale)
         {
-            Boundary = new Rectangle(x, y, BrickWidth, BrickHeight);
+            Boundary = new Rectangle(x, y, (int)(BrickWidth * scale), (int)(BrickHeight * scale));
         }
         public Rectangle Boundary { get; set; }
     }
