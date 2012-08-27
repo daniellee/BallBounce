@@ -14,7 +14,7 @@ namespace BallBounceLogic.Test
         [SetUp]
         public void Setup()
         {
-            _world = new World(800, 600) { GameSpeed = 1f };
+            _world = new World(800, 600, 1f) { GameSpeed = 1f };
 
             _ballsModel = new BallsModel(_world, BoxLength, BoxLength, new Vector2(0f, 0f), new Vector2(0f, 0f));
         }
