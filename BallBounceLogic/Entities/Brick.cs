@@ -11,7 +11,7 @@ namespace BallBounceLogic.Entities
         
         public Brick(int x, int y, float scale)
         {
-            Boundary = new Rectangle(x, y, (int)(BrickWidth * scale), (int)(BrickHeight * scale));
+            Boundary = new Rectangle((int)(x * scale), (int)(y * scale), (int)(BrickWidth * scale), (int)(BrickHeight * scale));
         }
         public Rectangle Boundary { get; set; }
     }
